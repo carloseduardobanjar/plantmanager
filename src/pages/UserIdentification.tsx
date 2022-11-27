@@ -10,7 +10,7 @@ import {
     TouchableWithoutFeedback,
     Keyboard,
 } from 'react-native';
-import { Button } from '../assets/components/Button';
+import { Button } from '../components/Button';
 import { useNavigation } from '@react-navigation/core'
 
 import colors from '../styles/colors';
