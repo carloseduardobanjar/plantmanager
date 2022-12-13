@@ -11,10 +11,13 @@
   "dependencies": {
     "@expo-google-fonts/jost": "^0.2.2",
     "@expo/vector-icons": "^13.0.0",
+    "@react-native-async-storage/async-storage": "~1.17.3",
+    "@react-native-community/datetimepicker": "6.2.0",
     "@react-navigation/native": "^6.0.14",
     "@react-navigation/native-stack": "^6.9.2",
     "@react-navigation/stack": "^6.3.5",
     "axios": "^1.2.0",
+    "date-fns": "^2.29.3",
     "expo": "~46.0.16",
     "expo-app-loading": "~2.1.0",
     "expo-font": "~10.2.0",
