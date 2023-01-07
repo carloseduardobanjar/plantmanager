@@ -17,29 +17,17 @@ import { Load } from '../components/Load';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import api from '../services/api';
+import { PlantProps } from '../libs/storage';
 
 interface EnviromentProps {
     key: string;
     title: string;
 }
 
-interface PlantsProps {
-    id: string;
-    name: string;
-    about: string;
-    water_tips: string;
-    photo: string;
-    environments: [string];
-    frequency: {
-        times: number;
-        repeat_every: string;
-    }
-}
-
 export function PlantSelect(){
     const [enviroments, setEnviroments] = useState<EnviromentProps[]>([]);
-    const [plants, setPlants] = useState<PlantsProps[]>([]);
-    const [filteredPlants, setFilteredPlants] = useState<PlantsProps[]>([]);
+    const [plants, setPlants] = useState<PlantProps[]>([]);
+    const [filteredPlants, setFilteredPlants] = useState<PlantProps[]>([]);
     const [enviromentsSelected, setEnviromentsSelected] = useState('all');
     const [loading, setLoading] = useState(true);
     
@@ -83,7 +71,7 @@ export function PlantSelect(){
         fetchPlants();
     }
 
-    function handlePlantSelect(plant: PlantsProps){
+    function handlePlantSelect(plant: PlantProps){
         navigation.navigate('PlantSave', { plant });
     }
 
