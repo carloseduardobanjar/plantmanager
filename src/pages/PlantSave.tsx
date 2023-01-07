@@ -6,7 +6,6 @@ import {
     Text,
     View,
     Image, 
-    ScrollView,
     Platform,
     TouchableOpacity,
 } from 'react-native';
@@ -21,7 +20,8 @@ import waterdrop from '../assets/waterdrop.png';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { format, isBefore } from 'date-fns';
-import { loadPlant, PlantProps, savePlant } from '../libs/storage';
+import { PlantProps, savePlant } from '../libs/storage';
+import { useNavigation } from '@react-navigation/native';
 
 interface Params {
     plant: PlantProps
@@ -32,6 +32,8 @@ export function PlantSave(){
     const [showDateTimer, setShowDatePicker] = useState(Platform.OS == 'ios');
     const route = useRoute();
     const { plant } = route.params as Params; 
+
+    const navigation = useNavigation();
 
     function handleOpenDateTimePickerForAndroid(){
         setShowDatePicker(oldState => !oldState)
@@ -52,12 +54,18 @@ export function PlantSave(){
     }
 
     async function handleSave(){
-        const data = await loadPlant();
-        console.log(data[0]);
         try{
             await savePlant({
                 ...plant,
                 dateTimeNotification: selectedDateTime
+            });
+
+            navigation.navigate('Confirmation', {
+                title: 'Tudo certo',
+                subtitle: 'Fique tranquilo que sempre lembramos você de cuidar da sua plantinha com muito cuidado',
+                buttonTitle: 'Muito obrigado :D',
+                icon: 'hug',
+                nextScreen: 'MyPlants',
             });
 
         }catch{
