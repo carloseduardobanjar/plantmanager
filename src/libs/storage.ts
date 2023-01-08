@@ -11,11 +11,12 @@ export interface PlantProps{
     frequency: {
         times: number;
         repeat_every: string;
-    },
+    };
+    hour: string;
     dateTimeNotification: Date;
 } 
 
-interface StoragePlantProps {
+export interface StoragePlantProps {
     [id: string]: {
         data: PlantProps;
     }
@@ -38,7 +39,7 @@ export async function savePlant(plant: PlantProps) : Promise<void> {
             ...oldPlants
         }));
     } catch (error){
-        throw new Error(error);
+        throw new Error();
     }
 }
 
@@ -64,6 +65,6 @@ export async function loadPlant() : Promise<PlantProps[]> {
 
         return plantsSorted;
     } catch (error){
-        throw new Error(error);
+        throw new Error();
     }
 }
