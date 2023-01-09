@@ -12,7 +12,7 @@ import {
 } from 'react-native-svg'
 
 
-interface PlantProps extends RectButton{
+interface PlantProps extends RectButtonProps{
     data: {
         name: string,
         photo: string,
