@@ -43,11 +43,12 @@ export function Welcome(){
                     Nós cuidamos de lembrar você sempre que precisar.
                 </Text>
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity 
+                    style={styles.button}
+                    onPress={handleStart}>
                     <Feather 
                         name="chevron-right"   
                         style={styles.buttonIcon}
-                        onPress={handleStart}
                     />
                 </TouchableOpacity>
             </View>
