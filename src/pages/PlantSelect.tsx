@@ -4,7 +4,8 @@ import {
     Text,
     StyleSheet,
     FlatList,
-    ActivityIndicator
+    ActivityIndicator,
+    TextInput
 } from 'react-native'
 
 import { EnviromentButton } from '../components/EnviromentButton';
@@ -122,6 +123,12 @@ export function PlantSelect(){
                     showsHorizontalScrollIndicator = {false}
                     contentContainerStyle={styles.enviromentList}
                 />
+                <TextInput
+                    style={[
+                        styles.input
+                    ]}
+                    placeholder="Digite o nome da planta"
+                />
             </View>
 
             <View style={styles.plants}>
@@ -188,5 +195,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 32,
         justifyContent: 'center'
     },    
+
+    input: {
+        borderColor: colors.gray,
+        color: colors.heading,
+        width: '100%',
+        fontSize: 15,
+        padding: 10,
+        textAlign: 'center'
+    },
 })
 
