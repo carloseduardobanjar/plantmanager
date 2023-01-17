@@ -134,7 +134,7 @@ export function PlantSelect(){
 
             <View style={styles.plants}>
                 <FlatList
-                    data={filteredPlants.filter((plant)=>plant.name.startsWith(busca))}
+                    data={filteredPlants.filter((plant)=>plant.name.toLowerCase().includes(busca.toLowerCase()))}
                     keyExtractor={(item) => String(item.id)}
                     renderItem={( { item }) => (
                         <PlantCardPrimary 
