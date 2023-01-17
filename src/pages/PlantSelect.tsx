@@ -30,10 +30,10 @@ export function PlantSelect(){
     const [plants, setPlants] = useState<PlantProps[]>([]);
     const [filteredPlants, setFilteredPlants] = useState<PlantProps[]>([]);
     const [enviromentsSelected, setEnviromentsSelected] = useState('all');
-    const [loading, setLoading] = useState(true);
-    
+    const [loading, setLoading] = useState(true);    
     const [page, setPage] = useState(1);
     const [loadingMore, setLoadingMore] = useState(false);
+    const [busca, setBusca] = useState<string>('');
 
     const navigation = useNavigation();
 
@@ -44,7 +44,7 @@ export function PlantSelect(){
             return setFilteredPlants(plants);
         
         const filtered = plants.filter(plant =>
-            plant.environments.includes(environment)
+            plant.environments.includes(environment) && plant.name.startsWith(busca)
         );
         setFilteredPlants(filtered);
     }
@@ -74,6 +74,14 @@ export function PlantSelect(){
 
     function handlePlantSelect(plant: PlantProps){
         navigation.navigate('PlantSave', { plant });
+    }
+
+    function handleInputChange(value: string){
+        setBusca(value);
+        const filtered = filteredPlants.filter(plant =>
+            plant.name.startsWith(busca)
+        );
+        setFilteredPlants(filtered);
     }
 
     useEffect(()=>{
@@ -128,6 +136,7 @@ export function PlantSelect(){
                         styles.input
                     ]}
                     placeholder="Digite o nome da planta"
+                    onChangeText={handleInputChange}
                 />
             </View>
 
