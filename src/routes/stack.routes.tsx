@@ -9,6 +9,7 @@ import { Confirmation } from '../pages/Confirmation';
 import { PlantSelect } from '../pages/PlantSelect';
 import { PlantSave } from '../pages/PlantSave';
 import AuthRoutes from './tab.routes';
+import { OnboardingScreen } from '../pages/Onboarding';
 
 const stackRoutes = createStackNavigator();
 
@@ -21,6 +22,11 @@ const AppRoutes : React.FC = () => (
             }
         }}
     >
+        <stackRoutes.Screen 
+            name="Onboarding"
+            component={OnboardingScreen}        
+        />
+
         <stackRoutes.Screen 
             name="Welcome"
             component={Welcome}        
