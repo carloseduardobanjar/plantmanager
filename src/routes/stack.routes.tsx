@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import colors from '../styles/colors'
@@ -10,10 +10,30 @@ import { PlantSelect } from '../pages/PlantSelect';
 import { PlantSave } from '../pages/PlantSave';
 import AuthRoutes from './tab.routes';
 import { OnboardingScreen } from '../pages/Onboarding';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const stackRoutes = createStackNavigator();
 
-const AppRoutes : React.FC = () => (
+const AppRoutes : React.FC = () => { 
+    const [firstLaunch, setFirstLaunch] = useState<boolean>();
+    
+    useEffect(()=>{
+        async function setData() {
+            //AsyncStorage.removeItem("appLaunched");
+            const appData = await AsyncStorage.getItem("appLaunched");
+            if (appData == null) {
+                setFirstLaunch(true);
+                AsyncStorage.setItem("appLaunched", "false");
+            } else {
+                setFirstLaunch(false);
+            }
+        }
+        setData();
+    },[]);
+    
+    
+    return (
+    firstLaunch != null && (
     <stackRoutes.Navigator
         screenOptions={{
             headerShown: false,
@@ -22,15 +42,17 @@ const AppRoutes : React.FC = () => (
             }
         }}
     >
+        {firstLaunch && (
         <stackRoutes.Screen 
             name="Onboarding"
             component={OnboardingScreen}        
         />
+        )}
 
-        <stackRoutes.Screen 
+        {/* <stackRoutes.Screen 
             name="Welcome"
             component={Welcome}        
-        />
+        /> */}
 
         <stackRoutes.Screen 
             name="UserIdentification"
@@ -57,7 +79,8 @@ const AppRoutes : React.FC = () => (
             component={AuthRoutes}        
         />
     </stackRoutes.Navigator>
-)
+    )
+)}
 
 export default AppRoutes;
 

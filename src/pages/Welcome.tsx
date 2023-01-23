@@ -59,14 +59,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-
     wrapper: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'space-around',
         paddingHorizontal: 20,
     },
-
     title: {
         fontSize: 28,
         textAlign: 'center',
@@ -75,7 +73,6 @@ const styles = StyleSheet.create({
         fontFamily: fonts.heading,
         lineHeight: 34,
     },
-
     subtitle: {
         textAlign: 'center',
         fontSize: 18,
@@ -83,11 +80,9 @@ const styles = StyleSheet.create({
         color: colors.heading,
         fontFamily: fonts.text,
     },
-
     image: {
         height: Dimensions.get('window').width * 0.7,
     },
-
     button: {
         backgroundColor: colors.green,
         justifyContent: 'center',
@@ -97,7 +92,6 @@ const styles = StyleSheet.create({
         height: 56,
         width: 56,
     }, 
-
     buttonIcon: {
         fontSize: 32,
         color: colors.white,
