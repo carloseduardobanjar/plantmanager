@@ -10,7 +10,7 @@ export function OnboardingScreen(){
     return(
         <Onboarding
         onSkip={() => navigation.replace("UserIdentification")}
-        onDone={() => navigation.navigate("UserIdentification")}
+        onDone={() => navigation.replace("UserIdentification")}
         pages={[
             {
                 backgroundColor:'#fff',

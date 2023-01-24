@@ -16,7 +16,6 @@ export function Load(){
                 loop
                 style={styles.animation}
             />
-
         </View>
     )
 }
