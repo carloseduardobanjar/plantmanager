@@ -4,6 +4,7 @@ import {
     Text,
     Image,
     View,
+    Alert,
 } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
@@ -11,10 +12,13 @@ import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import colors from '../styles/colors'
 import fonts from '../styles/fonts'
 import userImg from '../assets/user.png'
+import { useNavigation } from '@react-navigation/native';
 
 
 export function Header(){
     const [username, setUsername] = useState<string>();
+
+    const navigation = useNavigation();
     
     useEffect(() => {
         async function loadStorageUserName(){
@@ -24,17 +28,26 @@ export function Header(){
         loadStorageUserName();
     }, [username]);
 
+    async function changeUser(){
+        try {
+            await AsyncStorage.removeItem("@plantmanager:user");
+            navigation.navigate('UserIdentification');
+        }
+        catch(exception) {
+            Alert.alert("Não foi possível trocar o usuário");
+        }        
+    }
+
     return(
         <View style={styles.container}>
             <View>
                 <Text style={styles.greeting}>Olá, </Text>
-                <Text style={styles.userName}>{username}</Text>
+                <Text style={styles.userName} onPress={changeUser}>{username}</Text>
             </View>
             <Image style={styles.image} source={userImg} />
 
         </View>
     )
-
 }
 
 const styles = StyleSheet.create({

@@ -16,7 +16,6 @@ const stackRoutes = createStackNavigator();
 
 const AppRoutes : React.FC = () => { 
     const [firstLaunch, setFirstLaunch] = useState<boolean>();
-    const [filledName, setFilledName] = useState<boolean>();
     
     useEffect(()=>{
         async function setData() {
@@ -30,22 +29,9 @@ const AppRoutes : React.FC = () => {
         }
         setData();
     },[]);
-
-    useEffect(()=>{
-        async function setData() {
-            AsyncStorage.removeItem("@plantmanager:user");
-            const appData = await AsyncStorage.getItem("@plantmanager:user");
-            if (appData == null) {
-                setFilledName(false);
-            } else {
-                setFilledName(true);
-            }
-        }
-        setData();
-    },[]);
     
     return (
-    firstLaunch != null && filledName != null  && (
+    firstLaunch != null && (
     <stackRoutes.Navigator
         screenOptions={{
             headerShown: false,
@@ -61,19 +47,15 @@ const AppRoutes : React.FC = () => {
         />
         )}
 
-        {!filledName && (
         <stackRoutes.Screen 
             name="UserIdentification"
             component={UserIdentification}        
         />
-        )}
 
-        {!filledName && (
         <stackRoutes.Screen 
             name="Confirmation"
             component={Confirmation}        
         />
-        )}
 
         <stackRoutes.Screen 
             name="PlantSelect"

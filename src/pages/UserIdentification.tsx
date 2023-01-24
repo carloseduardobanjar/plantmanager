@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     SafeAreaView,
     StyleSheet,
@@ -25,6 +25,16 @@ export function UserIdentification(){
     const [name, setName] = useState<string>();
 
     const navigation = useNavigation();
+
+    useEffect(()=>{
+        async function setData() {
+            const appData = await AsyncStorage.getItem("@plantmanager:user");
+            if (appData != null) {
+                navigation.navigate('PlantSelect');
+            }
+        }
+        setData();
+    },[]);
 
     async function handleSubmit(){
         if(!name)
