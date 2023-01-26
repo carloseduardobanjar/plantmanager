@@ -38,9 +38,8 @@ export function PlantSelect(){
     const [loadingMore, setLoadingMore] = useState(false);
     const [busca, setBusca] = useState('');
 
-    const [films, setFilms] = useState<string[]>([]);
-    console.log(films);
-    const [filteredFilms, setFilteredFilms] = useState<string[]>([]);
+    const [plantNames, setPlantNames] = useState<string[]>([]);
+    const [filteredPlantNames, setFilteredPlantNames] = useState<string[]>([]);
     const [selectedValue, setSelectedValue] = useState<string>('');
 
     const navigation = useNavigation();
@@ -66,13 +65,13 @@ export function PlantSelect(){
             setFilteredPlants(oldValue => [...oldValue, ...data])
             let array = [] as string[];
             plants.forEach((element) => array.push(element.name));
-            setFilms(array);
+            setPlantNames(array);
         } else{
             setPlants(data);
             setFilteredPlants(data);
             let array = [] as string[];
-            plants.forEach((element) => array.push(element.name));
-            setFilms(array);
+            data.forEach((element: { name: string; }) => array.push(element.name));
+            setPlantNames(array);
         }
         setLoading(false);
         setLoadingMore(false);
@@ -108,14 +107,14 @@ export function PlantSelect(){
         fetchPlants();
     }, [])
 
-    const findFilm = (query: string) => {
+    const findPlantName = (query: string) => {
         if (query) {
-          const regex = new RegExp(`${query.trim()}`, 'i');
-          let array = [] as string[];
-          array = films.filter((film) => film.search(regex) >= 0);
-          setFilteredFilms(array);
+            const regex = new RegExp(`${query.trim()}`, 'i');
+            let array = [] as string[];
+            array = plantNames.filter((plant) => plant.search(regex) >= 0);
+            setFilteredPlantNames(array);
         } else {
-          setFilteredFilms([]);
+            setFilteredPlantNames([]);
         }
         setBusca(query);
     };
@@ -153,16 +152,16 @@ export function PlantSelect(){
                     autoCapitalize="none"
                     autoCorrect={false}
                     inputContainerStyle={styles.input}
-                    data={filteredFilms}
+                    data={filteredPlantNames}
                     defaultValue={selectedValue}
-                    onChangeText={(text) => findFilm(text)}
+                    onChangeText={(text) => findPlantName(text)}
                     placeholder="Digite o nome da planta"
                     flatListProps={{
                         renderItem: ( {item} ) => (
                             <TouchableOpacity
                                 onPress={() => {
                                     setSelectedValue(item);
-                                    setFilteredFilms([]);
+                                    setFilteredPlantNames([]);
                                 }}
                             >
                                 <Text
@@ -181,7 +180,7 @@ export function PlantSelect(){
                 <FlatList
                     data={filteredPlants.filter((plant)=>plant.name.toLowerCase().includes(busca.toLowerCase()))}
                     keyExtractor={(item) => String(item.id)}
-                    renderItem={( { item }) => (
+                    renderItem={( { item } ) => (
                         <PlantCardPrimary 
                             data={item} 
                             onPress={() => handlePlantSelect(item)}
