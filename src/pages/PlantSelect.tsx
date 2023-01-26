@@ -39,6 +39,7 @@ export function PlantSelect(){
     const [busca, setBusca] = useState('');
 
     const [films, setFilms] = useState<string[]>([]);
+    console.log(films);
     const [filteredFilms, setFilteredFilms] = useState<string[]>([]);
     const [selectedValue, setSelectedValue] = useState<string>('');
 
@@ -116,7 +117,8 @@ export function PlantSelect(){
         } else {
           setFilteredFilms([]);
         }
-      };
+        setBusca(query);
+    };
 
     if(loading)
     return <Load/>
@@ -147,18 +149,10 @@ export function PlantSelect(){
                     showsHorizontalScrollIndicator = {false}
                     contentContainerStyle={styles.enviromentList}
                 />
-                <TextInput
-                    style={[
-                        styles.input
-                    ]}
-                    placeholder="Digite o nome da planta"
-                    onChangeText={setBusca}
-                />
                 <Autocomplete
-                    onPressIn={() => setSelectedValue('')}
                     autoCapitalize="none"
                     autoCorrect={false}
-                    containerStyle={styles.autocompleteContainer}
+                    inputContainerStyle={styles.input}
                     data={filteredFilms}
                     defaultValue={selectedValue}
                     onChangeText={(text) => findFilm(text)}
@@ -243,22 +237,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },    
     input: {
-        borderColor: colors.gray,
-        color: colors.heading,
         width: '100%',
-        fontSize: 15,
         padding: 10,
-        textAlign: 'center'
+        alignItems: 'center',
+        borderWidth: 0,
     },
     itemText: {
         fontSize: 15,
         paddingTop: 5,
         paddingBottom: 5,
         margin: 2,
-    },
-    autocompleteContainer: {
-        backgroundColor: '#ffffff',
-        borderWidth: 0,
     },
 })
 
