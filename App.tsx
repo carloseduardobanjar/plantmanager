@@ -9,6 +9,7 @@ import {
   Jost_600SemiBold,
 } from '@expo-google-fonts/jost';
 import { PlantProps } from './src/libs/storage';
+import { ThemeProvider } from './src/contexts/theme';
 
 export default function App(){
   const [ fontsLoaded ] = useFonts({
@@ -40,6 +41,8 @@ export default function App(){
   }
 
   return(
-    <Routes />
+    <ThemeProvider>
+      <Routes />
+    </ThemeProvider>
   )
 }

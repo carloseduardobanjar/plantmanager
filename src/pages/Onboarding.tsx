@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Image, Text, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import Onboarding from 'react-native-onboarding-swiper';
-import colors from '../styles/colors';
+import myColors from '../styles/colors';
 import fonts from '../styles/fonts';
 
 export function OnboardingScreen(){
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 28,
         textAlign: 'center',
-        color: colors.heading,
+        color: myColors.heading,
         marginTop: 38,
         fontFamily: fonts.heading,
         lineHeight: 34,
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 18,
         paddingHorizontal: 20,
-        color: colors.heading,
+        color: myColors.heading,
         fontFamily: fonts.text,
     },
     welcomeTitle: {
@@ -73,6 +73,6 @@ const styles = StyleSheet.create({
         marginTop: 38,
         fontFamily: fonts.heading,
         lineHeight: 34,
-        color: colors.green,
+        color: myColors.green,
     }
 })

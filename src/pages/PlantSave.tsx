@@ -18,7 +18,7 @@ import DateTimePicker, { Event } from '@react-native-community/datetimepicker'
 import { Button } from '../components/Button';
  
 import waterdrop from '../assets/waterdrop.png';
-import colors from '../styles/colors';
+import myColors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { format, isBefore } from 'date-fns';
 import { PlantProps, savePlant } from '../libs/storage';
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'space-between',
-        backgroundColor: colors.shape,
+        backgroundColor: myColors.shape,
     },
 
     plantInfo: {
@@ -156,26 +156,26 @@ const styles = StyleSheet.create({
         paddingVertical: 50,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colors.shape,
+        backgroundColor: myColors.shape,
     },
 
     plantName: {
         fontFamily: fonts.heading,
         fontSize: 24,
-        color: colors.heading,
+        color: myColors.heading,
         marginTop: 15,
     },
 
     plantAbout: {
         textAlign: 'center',
         fontFamily: fonts.text,
-        color: colors.heading,
+        color: myColors.heading,
         fontSize: 17,
         marginTop: 10,
     },
 
     controller: {
-        backgroundColor: colors.white,
+        backgroundColor: myColors.white,
         paddingHorizontal: 20,
         paddingTop: 20,
         paddingBottom: getBottomSpace() || 20,
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: colors.blue_light,
+        backgroundColor: myColors.blue_light,
         padding: 20,
         borderRadius: 20,
         position: 'relative',
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginLeft: 20, 
         fontFamily: fonts.text,
-        color: colors.blue,
+        color: myColors.blue,
         fontSize: 17, 
         textAlign: 'justify'
     },
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     alertLabel: {
         textAlign: 'center',
         fontFamily: fonts.complement,
-        color: colors.heading,
+        color: myColors.heading,
         fontSize: 12, 
         marginBottom: 5,
     },
@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     },
 
     dateTimePickerText: {
-        color: colors.heading,
+        color: myColors.heading,
         fontSize: 24, 
         fontFamily: fonts.text,
     },

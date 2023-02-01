@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/core'
 
 import { Button } from '../components/Button';
 
-import colors from '../styles/colors';
+import myColors from '../styles/colors';
 import fonts from '../styles/fonts';
 
 interface Params {
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontFamily: fonts.heading,
         textAlign: 'center',
-        color: colors.heading,
+        color: myColors.heading,
         lineHeight: 38,
         marginTop: 15,
     },
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 17,
         paddingVertical: 10,
-        color: colors.heading,
+        color: myColors.heading,
     },
 
     emoji: {

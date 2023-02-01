@@ -13,7 +13,7 @@ import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/core'
 
 import wateringImg from '../assets/watering.png';
-import colors from '../styles/colors';
+import myColors from '../styles/colors';
 import fonts from '../styles/fonts';
 
 export function Welcome(){
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 28,
         textAlign: 'center',
-        color: colors.heading,
+        color: myColors.heading,
         marginTop: 38,
         fontFamily: fonts.heading,
         lineHeight: 34,
@@ -77,14 +77,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 18,
         paddingHorizontal: 20,
-        color: colors.heading,
+        color: myColors.heading,
         fontFamily: fonts.text,
     },
     image: {
         height: Dimensions.get('window').width * 0.7,
     },
     button: {
-        backgroundColor: colors.green,
+        backgroundColor: myColors.green,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 16,
@@ -94,6 +94,6 @@ const styles = StyleSheet.create({
     }, 
     buttonIcon: {
         fontSize: 32,
-        color: colors.white,
+        color: myColors.white,
     },   
 })

@@ -16,7 +16,7 @@ import { Header } from '../components/Header';
 import { PlantCardPrimary } from '../components/PlantCardPrimary';
 import { Load } from '../components/Load';
 
-import colors from '../styles/colors';
+import myColors from '../styles/colors';
 import fonts from '../styles/fonts';
 import api from '../services/api';
 import { PlantProps } from '../libs/storage';
@@ -192,7 +192,7 @@ export function PlantSelect(){
                     onEndReached={({ distanceFromEnd }) => handleFetchMore(distanceFromEnd)}
                     ListFooterComponent={
                         loadingMore
-                        ? <ActivityIndicator color={colors.green} />
+                        ? <ActivityIndicator color={myColors.green} />
                         : <></>
                     }
                 />
@@ -205,14 +205,14 @@ export function PlantSelect(){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.background,
+        backgroundColor: myColors.background,
     },
     header: {
         paddingHorizontal: 30,
     },
     title: {
         fontSize: 17, 
-        color: colors.heading,
+        color: myColors.heading,
         fontFamily: fonts.heading,
         lineHeigh: 20,
         marignTop: 15,
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
         fontFamily: fonts.text,
         fontSize: 17,
         lineHeight: 20,
-        color: colors.heading,
+        color: myColors.heading,
     },
     enviromentList: {
         height: 40, 

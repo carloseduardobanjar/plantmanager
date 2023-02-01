@@ -7,7 +7,7 @@ import {
     Alert,
 } from 'react-native'
 import { Header } from '../components/Header';
-import colors from '../styles/colors';
+import myColors from '../styles/colors';
 
 import waterdrop from '../assets/waterdrop.png';
 import { FlatList } from 'react-native-gesture-handler';
@@ -115,10 +115,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 30,
-        backgroundColor: colors.background
+        backgroundColor: myColors.background
     },
     spotlight: {
-        backgroundColor: colors.blue_light,
+        backgroundColor: myColors.blue_light,
         paddingHorizontal: 20,
         borderRadius: 20,
         height: 110,
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     },
     spotlightText: {
         flex: 1,
-        color: colors.blue,
+        color: myColors.blue,
         paddingHorizontal: 20,
     },
     plants: {
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     plantsTitle: {
         fontSize: 24,
         fontFamily: fonts.heading,
-        color: colors.heading, 
+        color: myColors.heading, 
         marginVertical: 20,
     }
 });

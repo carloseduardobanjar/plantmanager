@@ -10,12 +10,13 @@ import {
     TouchableWithoutFeedback,
     Keyboard,
     Alert,
+    Switch,
 } from 'react-native';
 import { Button } from '../components/Button';
 import { useNavigation } from '@react-navigation/core'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-
-import colors from '../styles/colors';
+import { useTheme } from '../contexts/theme';
+import myColors from '../styles/colors';
 import fonts from '../styles/fonts';
 
 
@@ -23,8 +24,8 @@ export function UserIdentification(){
     const [isFocused, setIsFocused] = useState(false);
     const [isFilled, setIsFilled] = useState(false);
     const [name, setName] = useState<string>();
-
     const navigation = useNavigation();
+    const {dark, colors, setScheme} = useTheme();
 
     useEffect(()=>{
         async function setData() {
@@ -66,10 +67,13 @@ export function UserIdentification(){
         setIsFilled(!!value);
         setName(value);
     }
-    
 
+    function toggleTheme(){
+        dark ? setScheme('light') : setScheme('dark');
+    }
+    
     return(
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={[styles.container, {backgroundColor: colors.background}]}>
             <KeyboardAvoidingView 
                 style={styles.container}
                 behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
@@ -90,24 +94,24 @@ export function UserIdentification(){
                             <TextInput
                                 style={[
                                     styles.input,
-                                    (isFocused || isFilled) && {borderColor: colors.green}
+                                    (isFocused || isFilled) && {borderColor: myColors.green}
                                 ]}
                                 placeholder="Digite um nome"
                                 onBlur={handleInputBlur}
                                 onFocus={handleInputFocus}
                                 onChangeText={handleInputChange}
                             />
-                            <View style={styles.footer}>
+                            <View style={styles.footer}> 
                                 <Button 
                                     title='Confirmar'
                                     onPress={handleSubmit}
                                 />
-                            </View>
-                        
+                            </View>                        
                         </View>
                     </View>
                 </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
+            <Switch value={dark} onChange={toggleTheme}></Switch>
         </SafeAreaView>
     )
 }
@@ -142,8 +146,8 @@ const styles = StyleSheet.create({
 
     input: {
         borderBottomWidth: 1,
-        borderColor: colors.gray,
-        color: colors.heading,
+        borderColor: myColors.gray,
+        color: myColors.heading,
         width: '100%',
         fontSize: 18,
         marginTop: 50,
@@ -155,7 +159,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         lineHeight: 32,
         textAlign: 'center',
-        color: colors.heading,
+        color: myColors.heading,
         fontFamily: fonts.heading,
         marginTop: 20
     },
