@@ -4,8 +4,9 @@ import {
     Text
 } from 'react-native'
 import { RectButton, RectButtonProps } from 'react-native-gesture-handler'
+import { useTheme } from '../contexts/theme';
 
-import colors from '../styles/colors'; 
+import myColors from '../styles/colors'; 
 import fonts from '../styles/fonts'; 
 
 
@@ -15,11 +16,13 @@ interface EnviromentButtonProps extends RectButtonProps{
 }
 
 export function EnviromentButton({title, active = false, ...rest} : EnviromentButtonProps){
+    const {colors} = useTheme();
     return(
         <RectButton 
             style={[
                 styles.container,
-                active && styles.containerActive
+                active && styles.containerActive,
+                {backgroundColor: colors.card}
             ]}
             {...rest}
         > 
@@ -35,7 +38,6 @@ export function EnviromentButton({title, active = false, ...rest} : EnviromentBu
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.shape,
         width: 76,
         height: 40,
         justifyContent: 'center',
@@ -45,16 +47,16 @@ const styles = StyleSheet.create({
     },
 
     containerActive: {
-        backgroundColor: colors.green_light,
+        backgroundColor: myColors.green_light,
     },
 
     text: {
-        color: colors.heading,
+        color: myColors.heading,
         fontFamily: fonts.text,
     },
 
     textActive: {
-        color: colors.green_dark,
+        color: myColors.green_dark,
         fontFamily: fonts.heading,
     },
 

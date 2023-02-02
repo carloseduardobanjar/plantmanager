@@ -1,24 +1,34 @@
 import React from 'react';
 import { Platform } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import colors from '../styles/colors';
+import myColors from '../styles/colors';
 import { MaterialIcons } from '@expo/vector-icons';
 import { MyPlants } from '../pages/MyPlants';
 import { PlantSelect } from '../pages/PlantSelect';
+import { useTheme } from '../contexts/theme';
 
 const AppTab = createBottomTabNavigator();
 
 const AuthRoutes = () => {
+    const {colors} = useTheme();
     return(
         <AppTab.Navigator
             screenOptions={{
-                tabBarActiveTintColor: colors.green,
-                tabBarInactiveTintColor: colors.heading,
+                tabBarActiveTintColor: myColors.green,
+                tabBarInactiveTintColor: myColors.heading,
                 tabBarLabelPosition: 'beside-icon',
                 tabBarStyle:{
                     paddingVertical: Platform.OS == 'ios' ? 20 : 0, 
                     height: 88,
+                    backgroundColor: '#161616',
                 },
+                headerStyle:{
+                    backgroundColor: '#161616',
+                    shadowOffset: {
+                        width: 0, height: 0 // for ios
+                    },
+                    
+                }
             }}>
                 <AppTab.Screen
                     name="Nova Planta"
@@ -30,7 +40,8 @@ const AuthRoutes = () => {
                                 size={size}
                                 color={color}
                             />
-                        )) 
+                        )),
+                        headerTintColor: '#fff',
                     }}
                 />
                 <AppTab.Screen

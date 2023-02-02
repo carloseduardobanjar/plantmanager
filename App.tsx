@@ -10,6 +10,7 @@ import {
 } from '@expo-google-fonts/jost';
 import { PlantProps } from './src/libs/storage';
 import { ThemeProvider } from './src/contexts/theme';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App(){
   const [ fontsLoaded ] = useFonts({
@@ -17,7 +18,8 @@ export default function App(){
     Jost_600SemiBold
   });
 
-  useEffect(()=>{
+  useEffect(() => {
+    AsyncStorage.clear();
     const subscription = Notifications.addNotificationReceivedListener(
       async notification => {
         const data = notification.request.content.data.plant as PlantProps;

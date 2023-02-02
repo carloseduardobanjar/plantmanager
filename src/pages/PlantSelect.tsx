@@ -22,6 +22,7 @@ import api from '../services/api';
 import { PlantProps } from '../libs/storage';
 
 import Autocomplete from 'react-native-autocomplete-input';
+import { useTheme } from '../contexts/theme';
 
 interface EnviromentProps {
     key: string;
@@ -41,6 +42,7 @@ export function PlantSelect(){
     const [plantNames, setPlantNames] = useState<string[]>([]);
     const [filteredPlantNames, setFilteredPlantNames] = useState<string[]>([]);
     const [selectedValue, setSelectedValue] = useState<string>('');
+    const {colors} = useTheme();
 
     const navigation = useNavigation();
 
@@ -122,7 +124,7 @@ export function PlantSelect(){
     if(loading)
     return <Load/>
     return(
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: colors.background}]}>
             <View style={styles.header}>
                 <Header />
 
@@ -151,7 +153,8 @@ export function PlantSelect(){
                 <Autocomplete
                     autoCapitalize="none"
                     autoCorrect={false}
-                    inputContainerStyle={styles.input}
+                    inputContainerStyle={[styles.input]}
+                    style={{backgroundColor: 'black', color: 'white'}}
                     data={filteredPlantNames}
                     defaultValue={selectedValue}
                     onChangeText={(text) => findPlantName(text)}
@@ -165,7 +168,7 @@ export function PlantSelect(){
                                 }}
                             >
                                 <Text
-                                    style={styles.itemText}
+                                    style={[styles.itemText, {color: 'white'}]}
                                 >
                                     {item}
                                 </Text>
@@ -205,7 +208,6 @@ export function PlantSelect(){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: myColors.background,
     },
     header: {
         paddingHorizontal: 30,

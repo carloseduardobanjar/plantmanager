@@ -23,6 +23,7 @@ import fonts from '../styles/fonts';
 import { format, isBefore } from 'date-fns';
 import { PlantProps, savePlant } from '../libs/storage';
 import { useNavigation } from '@react-navigation/native';
+import { useTheme } from '../contexts/theme';
 
 interface Params {
     plant: PlantProps
@@ -33,8 +34,8 @@ export function PlantSave(){
     const [showDateTimer, setShowDatePicker] = useState(Platform.OS == 'ios');
     const route = useRoute();
     const { plant } = route.params as Params; 
-
     const navigation = useNavigation();
+    const {colors} = useTheme();
 
     function handleOpenDateTimePickerForAndroid(){
         setShowDatePicker(oldState => !oldState)
@@ -77,10 +78,10 @@ export function PlantSave(){
     return (
         <ScrollView
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={styles.container}    
+            contentContainerStyle={[styles.container, {backgroundColor: colors.background}]}    
         >
-            <View style={styles.container}>
-                <View style={styles.plantInfo}>
+            <View style={[styles.container, {backgroundColor: colors.background}]}>
+                <View style={[styles.plantInfo, {backgroundColor: colors.background}]}>
                     <SvgFromUri
                         uri={plant.photo}
                         height={150}
@@ -94,7 +95,7 @@ export function PlantSave(){
                     </Text> 
                 </View>
 
-                <View style={styles.controller}>
+                <View style={[styles.controller, {backgroundColor: colors.card}]}>
                     <View style={styles.tipContainer}>
                         <Image
                             source={waterdrop}
@@ -147,7 +148,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'space-between',
-        backgroundColor: myColors.shape,
     },
 
     plantInfo: {
@@ -156,7 +156,6 @@ const styles = StyleSheet.create({
         paddingVertical: 50,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: myColors.shape,
     },
 
     plantName: {
@@ -179,7 +178,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingTop: 20,
         paddingBottom: getBottomSpace() || 20,
-
     },
 
     tipContainer: {

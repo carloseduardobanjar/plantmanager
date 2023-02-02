@@ -7,11 +7,10 @@ import {
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/core'
-
 import { Button } from '../components/Button';
-
 import myColors from '../styles/colors';
 import fonts from '../styles/fonts';
+import { useTheme } from '../contexts/theme';
 
 interface Params {
     title: string,
@@ -29,6 +28,7 @@ const emojis = {
 export function Confirmation(){
     const navigation = useNavigation();
     const routes = useRoute();
+    const {colors} = useTheme();
 
     const {
         title,
@@ -42,7 +42,7 @@ export function Confirmation(){
         navigation.navigate(nextScreen);
     }
     return(
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={[styles.container, {backgroundColor: colors.background}]}>
             <View style={styles.content}>
                 <Text style={styles.emoji}>
                     {emojis[icon]}

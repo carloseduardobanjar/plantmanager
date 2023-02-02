@@ -14,6 +14,7 @@ import {
     SvgFromUri
 } from 'react-native-svg'
 import { Feather } from '@expo/vector-icons';
+import { useTheme } from '../contexts/theme';
 
 
 interface PlantProps extends RectButtonProps{
@@ -26,6 +27,7 @@ interface PlantProps extends RectButtonProps{
 }
 
 export const PlantCardSecondary = ({ data, handleRemove, ...rest } : PlantProps) => {
+    const {colors} = useTheme();
     return(
         <Swipeable
             overshootRight={false}
@@ -43,7 +45,7 @@ export const PlantCardSecondary = ({ data, handleRemove, ...rest } : PlantProps)
             )}
         >
             <RectButton
-                style={styles.container}
+                style={[styles.container, {backgroundColor: colors.card}]}
                 {...rest}
             >
                 <SvgFromUri 
@@ -77,7 +79,6 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: colors.shape,
         marginVertical: 5, 
     },
     title: {

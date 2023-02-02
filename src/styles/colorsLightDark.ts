@@ -1,14 +1,15 @@
 export const lightColors = {
   text: 'black',
-  // primary: string;
   background: 'white',
-  // card: string;
-  // text: string;
+  card: '#F0F0F0', //shape
+  // primary: string;
   // border: string;
   // notification: string;
+  
 };
 
 export const darkColors = {
   background: 'black',
   text: 'white',
+  card: '#161616'
 };

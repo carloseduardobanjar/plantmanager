@@ -17,10 +17,12 @@ import { pt } from 'date-fns/locale';
 import fonts from '../styles/fonts';
 import { PlantCardSecondary } from '../components/PlantCardSecondary';
 import { Load } from '../components/Load';
+import { useTheme } from '../contexts/theme';
 export function MyPlants() {
     const [myPlants, setMyPlants] = useState<PlantProps[]>([]);
     const [loading, setLoading] = useState(true);
     const [nextWaterd, setNextWaterd] = useState<String>();
+    const {colors} = useTheme();
 
     function handleRemove(plant: PlantProps){
         Alert.alert('Remover', `Deseja remover a ${plant.name}?`, [
@@ -58,7 +60,7 @@ export function MyPlants() {
                 );
     
                 setNextWaterd(
-                    `Não esqueca de regar a ${plantsStoraged[0].name} à ${nextTime} horas.`
+                    `Não esqueca de regar a ${plantsStoraged[0].name} à ${nextTime}.`
                 )
             } else{
                 setNextWaterd(
@@ -76,7 +78,7 @@ export function MyPlants() {
         return <Load />
 
     return (
-        <View style={styles.container} >
+        <View style={[styles.container, {backgroundColor: colors.background}]} >
             <Header/>
             <View style={styles.spotlight}>
                 <Image 
@@ -115,7 +117,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 30,
-        backgroundColor: myColors.background
     },
     spotlight: {
         backgroundColor: myColors.blue_light,

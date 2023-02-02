@@ -5,11 +5,12 @@ import {
     Image,
 } from 'react-native'
 import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
-import colors from '../styles/colors';
+import myColors from '../styles/colors';
 import fonts from '../styles/fonts';
 import {
     SvgFromUri
 } from 'react-native-svg'
+import { useTheme } from '../contexts/theme';
 
 
 interface PlantProps extends RectButtonProps{
@@ -20,9 +21,10 @@ interface PlantProps extends RectButtonProps{
 }
 
 export const PlantCardPrimary = ({ data, ...rest } : PlantProps) => {
+    const {colors} = useTheme();
     return(
         <RectButton
-            style={styles.container}
+            style={[styles.container, {backgroundColor: colors.card}]}
             {...rest}
         >
             <SvgFromUri uri={data.photo} width={70} height={70}/>
@@ -38,7 +40,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         maxWidth: '45%',
-        backgroundColor: colors.shape,
         borderRadius: 20,
         paddingVertical: 10, 
         alignItems: 'center',
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
     },
 
     text: {
-        color: colors.green_dark,
+        color: myColors.green_dark,
         fontFamily: fonts.heading,
         marginVertical: 16,
     }

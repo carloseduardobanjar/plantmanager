@@ -4,16 +4,19 @@ import { useNavigation } from '@react-navigation/core';
 import Onboarding from 'react-native-onboarding-swiper';
 import myColors from '../styles/colors';
 import fonts from '../styles/fonts';
+import { useTheme } from '../contexts/theme';
 
 export function OnboardingScreen(){
     const navigation = useNavigation();
+    const {colors} = useTheme();
+    
     return(
         <Onboarding
         onSkip={() => navigation.replace("UserIdentification")}
         onDone={() => navigation.replace("UserIdentification")}
         pages={[
             {
-                backgroundColor:'#fff',
+                backgroundColor: colors.background,
                 image: 
                     <Image/>,
                 title:  
@@ -24,7 +27,7 @@ export function OnboardingScreen(){
                 subtitle: '',
             },
             {
-                backgroundColor:'#fff',
+                backgroundColor: colors.background,
                 image: 
                     <Image 
                         source={require('../assets/watering.png')} 
