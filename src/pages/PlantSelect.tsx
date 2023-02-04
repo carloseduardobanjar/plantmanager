@@ -154,11 +154,12 @@ export function PlantSelect(){
                     autoCapitalize="none"
                     autoCorrect={false}
                     inputContainerStyle={[styles.input]}
-                    style={{backgroundColor: 'black', color: 'white'}}
+                    style={{backgroundColor: colors.background, color: myColors.heading}}
                     data={filteredPlantNames}
                     defaultValue={selectedValue}
                     onChangeText={(text) => findPlantName(text)}
                     placeholder="Digite o nome da planta"
+                    placeholderTextColor={myColors.heading}
                     flatListProps={{
                         renderItem: ( {item} ) => (
                             <TouchableOpacity
@@ -168,7 +169,7 @@ export function PlantSelect(){
                                 }}
                             >
                                 <Text
-                                    style={[styles.itemText, {color: 'white'}]}
+                                    style={styles.itemText}
                                 >
                                     {item}
                                 </Text>
@@ -248,6 +249,7 @@ const styles = StyleSheet.create({
         paddingTop: 5,
         paddingBottom: 5,
         margin: 2,
+        color: myColors.heading,
     },
 })
 

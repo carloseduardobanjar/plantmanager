@@ -78,10 +78,10 @@ export function PlantSave(){
     return (
         <ScrollView
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={[styles.container, {backgroundColor: colors.background}]}    
+            contentContainerStyle={[styles.container, {backgroundColor: colors.card}]}    
         >
-            <View style={[styles.container, {backgroundColor: colors.background}]}>
-                <View style={[styles.plantInfo, {backgroundColor: colors.background}]}>
+            <View style={[styles.container, {backgroundColor: colors.card}]}>
+                <View style={[styles.plantInfo, {backgroundColor: colors.card}]}>
                     <SvgFromUri
                         uri={plant.photo}
                         height={150}
@@ -95,7 +95,7 @@ export function PlantSave(){
                     </Text> 
                 </View>
 
-                <View style={[styles.controller, {backgroundColor: colors.card}]}>
+                <View style={[styles.controller, {backgroundColor: colors.background}]}>
                     <View style={styles.tipContainer}>
                         <Image
                             source={waterdrop}
@@ -117,6 +117,7 @@ export function PlantSave(){
                             mode="time"
                             display="spinner"
                             onChange={handleChangeTime}
+                            textColor={myColors.heading}
                         />
                     )}
 

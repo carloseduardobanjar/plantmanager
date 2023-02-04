@@ -22,7 +22,6 @@ export function EnviromentButton({title, active = false, ...rest} : EnviromentBu
             style={[
                 styles.container,
                 active && styles.containerActive,
-                {backgroundColor: colors.card}
             ]}
             {...rest}
         > 

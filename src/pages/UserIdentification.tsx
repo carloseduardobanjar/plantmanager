@@ -97,6 +97,7 @@ export function UserIdentification(){
                                     (isFocused || isFilled) && {borderColor: myColors.green}
                                 ]}
                                 placeholder="Digite um nome"
+                                placeholderTextColor={myColors.heading}
                                 onBlur={handleInputBlur}
                                 onFocus={handleInputFocus}
                                 onChangeText={handleInputChange}

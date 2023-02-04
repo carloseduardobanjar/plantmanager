@@ -20,14 +20,15 @@ const AuthRoutes = () => {
                 tabBarStyle:{
                     paddingVertical: Platform.OS == 'ios' ? 20 : 0, 
                     height: 88,
-                    backgroundColor: '#161616',
+                    backgroundColor: colors.background,
+                    borderTopWidth: 0,
                 },
                 headerStyle:{
-                    backgroundColor: '#161616',
+                    backgroundColor: colors.background,
                     shadowOffset: {
-                        width: 0, height: 0 // for ios
+                        width: 0, 
+                        height: 0 
                     },
-                    
                 }
             }}>
                 <AppTab.Screen
@@ -41,7 +42,7 @@ const AuthRoutes = () => {
                                 color={color}
                             />
                         )),
-                        headerTintColor: '#fff',
+                        headerTintColor: myColors.heading,
                     }}
                 />
                 <AppTab.Screen
@@ -54,7 +55,8 @@ const AuthRoutes = () => {
                                 size={size}
                                 color={color}
                             />
-                        )) 
+                        )),
+                        headerTintColor: myColors.heading,
                     }}
                 />
         </AppTab.Navigator>
